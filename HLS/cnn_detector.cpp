@@ -13,7 +13,7 @@
 //   - Added out_w, out_b for true learned output layer
 // ============================================================
 
-#include "real_detector.h"
+#include "cnn_detector.h"
 
 // ============================================================
 // HELPER: ReLU clamp to int16

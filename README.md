@@ -4,9 +4,6 @@
 ![HLS](https://img.shields.io/badge/HLS-Vitis%20HLS-blue?style=for-the-badge)
 ![Framework](https://img.shields.io/badge/Framework-PYNQ%20v2.7-green?style=for-the-badge)
 ![Language](https://img.shields.io/badge/Language-HLS%20C%2B%2B%20%7C%20Python-yellow?style=for-the-badge)
-![Status](https://img.shields.io/badge/Status-Working%20Prototype-brightgreen?style=for-the-badge)
-
-**[📹 Demo Video](#-demonstration) · [📄 Final Report](docs/final_report.pdf) · [⚡ Quick Start](#-getting-started)**
 
 </div>
 
@@ -74,7 +71,8 @@ The design partitions functionality across the Zynq SoC's heterogeneous architec
 
 ### Vivado Block Design
 
-![Vivado Block Diagram](vivado/block_diagram.png)
+![block_diagram](https://github.com/user-attachments/assets/4f7b9ea9-377a-4d95-be17-0ed8024f7d8a)
+
 
 The block design connects the ZYNQ7 Processing System to the `real_detector_0` HLS IP via three AXI SmartConnect blocks — one per HP slave port — enabling concurrent DMA bursts for image, weight, and result buffers from separate DDR regions.
 
@@ -109,24 +107,18 @@ hw-accelerated-cnn-zynq/
 ├── dataset/                        # Raw or preprocessed image data
 │   ├── cat/                        # Images of cats
 │   ├── dog/                        # Images of dogs
-│   └── sample/                     # 10 quick-test sample images
+│   └── sample/                     # Quick-test sample images
 │
 ├── model/                          # Trained models and exported weights
-│   ├── train.ipynb                 # Google Colab training notebook (PyTorch)
-│   ├── quantize_weights.py         # float32 → int8 conversion script
-│   ├── cat/                        # Weights/biases specific to cat class
-│   ├── dog/                        # Weights/biases specific to dog class
-│   └── weights/                    # Quantized .npy weight arrays
-│       ├── conv1_w.npy  conv1_b.npy
-│       ├── conv2_w.npy  conv2_b.npy
-│       ├── conv3_w.npy  conv3_b.npy
-│       ├── fc_w.npy     fc_b.npy
-│       └── out_w.npy    out_b.npy
+│    ├── conv1_w.npy  conv1_b.npy
+│    ├── conv2_w.npy  conv2_b.npy
+│    ├── conv3_w.npy  conv3_b.npy
+│    ├── fc_w.npy     fc_b.npy
+│    └── out_w.npy    out_b.npy
 │
 ├── vitis_hls/                      # High-Level Synthesis C/C++ code
-│   ├── real_detector.cpp           # Core CNN hardware accelerator logic
-│   ├── real_detector.h             # Header file with architecture constants & pragmas
-│   └── tb_real_detector.cpp        # C-simulation testbench
+│   ├──  cnn_detector.cpp           # Core CNN hardware accelerator logic
+│   └──  cnn_detector.h             # Header file with architecture constants & pragmas
 │
 ├── vivado/                         # Hardware design files and bitstreams
 │   ├── block_diagram.png           # Visual export of the IP integrator block design
@@ -302,7 +294,7 @@ cp model/weights/*.npy /home/xilinx/pynq/overlays/Madhavan/
 
 **CPU Baseline:** Open `software/cpu_inference.ipynb` and run all cells to observe standard ARM processor performance.
 
-**FPGA Accelerated:** Open `software/fpga_inference.ipynb` to program the FPGA fabric with the custom hardware and execute accelerated inference.
+**FPGA Accelerated:** Open `software/fpga_inference.py` to program the FPGA fabric with the custom hardware and execute accelerated inference.
 
 Expected terminal output from FPGA run:
 
@@ -315,10 +307,6 @@ Confidence: 18420
 BBox Center (FPGA 64x64): 35 28
 BBox Center (Scaled): 280 224
 ```
-
-### 4. (Optional) Retrain from Scratch
-
-Open `model/train.ipynb` in Google Colab, train on your Cat/Dog dataset, then run `python model/quantize_weights.py` to regenerate int8 `.npy` weight files and replace them on the board.
 
 ---
 
@@ -336,17 +324,20 @@ A core objective of this project is to quantitatively compare the hardware accel
 
 > Replace placeholder values with actual results after final testing. Benchmark scripts: `software/cpu_inference.ipynb` and `software/fpga_inference.ipynb`.
 
-### FPGA Resource Utilization
+Vivado v2023.1 — Post-Implementation Report — Device: xc7z020clg400-1 — Date: 19 Feb 2026
 
-> From Vivado Implementation Report (post-route) — fill in from your run
-
-| Resource | Used | Available (Z-7020) | Utilization |
+| Resource | Used | Available | Utilization |
 |---|---|---|---|
-| LUT | XX | 53,200 | XX% |
-| LUTRAM | XX | 17,400 | XX% |
-| FF (Flip-Flop) | XX | 106,400 | XX% |
-| BRAM 36K | XX | 140 | XX% |
-| DSP48 | XX | 220 | XX% |
+| Slice LUTs | 27,588 | 53,200 | **51.86%** |
+| LUT as Logic | 23,560 | 53,200 | 44.29% |
+| LUT as Memory | 4,028 | 17,400 | 23.15% |
+| Slice Registers (FF) | 34,603 | 106,400 | **32.52%** |
+| Slices | 11,507 | 13,300 | **86.52%** |
+| BRAM Tiles | 140 | 140 | **100%** ⚠️ |
+| DSP48 | 220 | 220 | **100%** ⚠️ |
+| BUFG (Clocking) | 1 | 32 | 3.13% |
+
+> ⚠️ **BRAM and DSP are fully saturated** — the design maximally utilizes all available Block RAM and DSP48 slices on the xc7z020. This confirms the CNN is pushing the hardware to its limits. Any further scaling (more filters, deeper network) would require a larger Zynq device.
 
 Screenshot: [`output/resource_utilization.png`](output/resource_utilization.png)
 

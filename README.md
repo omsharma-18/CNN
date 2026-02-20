@@ -300,8 +300,8 @@ A core objective of this project is to quantitatively compare the hardware accel
 | Metric | CPU-Only (ARM) | FPGA-Accelerated (Zynq PL) | Improvement |
 |---|---|---|---|
 | Latency | ~42.8 ms | ~3.38 ms | **> 12× Speedup** |
-| Throughput | ~X FPS | ~295 ms  | **> 2× Speedup** |
-| Estimated Power | ~1.5 W | ~___ W | — |
+| Throughput | ~20 to 24 ms | ~295 ms  | **> 10× Speedup** |
+| Estimated Power | ~ 4W | ~2.36 W | low power consumption |
 
 > Replace placeholder values with actual results after final testing. Benchmark scripts: `software/cpu_inference.ipynb` and `software/fpga_inference.ipynb`.
 

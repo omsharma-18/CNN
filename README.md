@@ -89,38 +89,38 @@ The block design connects the ZYNQ7 Processing System to the `real_detector_0` H
 ```
 hw-accelerated-cnn-zynq/
 │
-├── dataset/                        # Raw or preprocessed image data
+├── Dataset/                        # Raw or preprocessed image data
 │   ├── cat/                        # Images of cats
 │   ├── dog/                        # Images of dogs
 │   └── sample/                     # Quick-test sample images
 │
-├── model/                          # Trained models and exported weights
+├── Model/                          # Trained models and exported weights
 │    ├── conv1_w.npy  conv1_b.npy
 │    ├── conv2_w.npy  conv2_b.npy
 │    ├── conv3_w.npy  conv3_b.npy
 │    ├── fc_w.npy     fc_b.npy
 │    └── out_w.npy    out_b.npy
 │
-├── vitis_hls/                      # High-Level Synthesis C/C++ code
+├── HLS/                      # High-Level Synthesis C/C++ code
 │   ├──  cnn_detector.cpp           # Core CNN hardware accelerator logic
 │   └──  cnn_detector.h             # Header file with architecture constants & pragmas
 │
-├── vivado/                         # Hardware design files and bitstreams
+├── Vivado/                         # Hardware design files and bitstreams
 │   ├── block_diagram.jpeg           # Visual export of the IP integrator block design
 │   ├── wrapper.v                   # Top-level Verilog HDL wrapper
 │   ├── madh.bit                    # Compiled bitstream file for the FPGA
 │   └── madh.hwh                    # Hardware handoff file (required for PYNQ)
 │
-├── software/                       # Embedded software and Jupyter notebooks
+├── Software(Jupyter)/                       # Embedded software and Jupyter notebooks
 │   ├── fpga_inference.ipynb        # Hardware-accelerated execution using the bitstream
 │   └── cpu_inference.ipynb         # Baseline software-only CNN execution on ARM
 │
-├── docs/                           # Project documentation
+├── Docs/                           # Project documentation
 │   ├── final_report.pdf            # Full project report
 │   ├── system_architecture.jpeg     # HW/SW partitioning diagram
 │   └── replication_guide.md        # Step-by-step setup instructions
 │
-├── output/                         # Project deliverables and demonstrations
+├── Output/                         # Project deliverables and demonstrations
 │   ├── screenshot.jpeg              # Screenshot of working inference + bounding box
 │   ├── resource_utilization_report.txt    # Vivado utilization screenshot
 │   └── demo_video_link.mp4              # Live demonstration of real-time inference
@@ -329,7 +329,7 @@ Text File [`Output/Resource_Utilization_Report.txt`](Output/Resource_Utilization
 Check the `output/` directory for a live demonstration of the system in action.
 
 - **`video_demo.mp4`** — Full walkthrough of real-time edge AI object detection on the PYNQ-Z2
-- **`screenshot.png`** — Static capture of the bounding box and classification output
+- **`screenshot.jpeg`** — Static capture of the bounding box and classification output
 
 The demo shows: board booting with overlay loaded → image fed through FPGA pipeline → bounding box drawn on original-resolution image → HUD overlay with prediction label, latency, FPS, and confidence score → side-by-side CPU vs FPGA timing comparison.
 
@@ -342,6 +342,15 @@ The demo shows: board booting with overlay loaded → image fed through FPGA pip
 - Understanding of hardware/software partitioning to optimize latency, throughput, and power efficiency
 - Practical experience with AXI4 interfaces, BRAM optimization, and fixed-point arithmetic on FPGAs
 - Performance analysis and benchmarking of heterogeneous SoC designs
+
+---
+
+---
+
+## Future Enhancements
+
+- Currently we have did only 3 Layer Custom CNN model due to resource limitation of PYNQ-Z2 , will advance it into a Multi-Layer Architecture
+- The model's accuracy is around 70% and the bounding box isn't that accurate , will build an efficient model that can handle multi-classification & Detection very well
 
 ---
 

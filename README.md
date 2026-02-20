@@ -123,7 +123,7 @@ hw-accelerated-cnn-zynq/
 ├── output/                         # Project deliverables and demonstrations
 │   ├── screenshot.jpeg              # Screenshot of working inference + bounding box
 │   ├── resource_utilization_report.txt    # Vivado utilization screenshot
-│   └── video_demo.mp4              # Live demonstration of real-time inference
+│   └── demo_video_link.mp4              # Live demonstration of real-time inference
 │
 └── README.md
 ```

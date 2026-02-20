@@ -106,7 +106,7 @@ hw-accelerated-cnn-zynq/
 │   └──  cnn_detector.h             # Header file with architecture constants & pragmas
 │
 ├── vivado/                         # Hardware design files and bitstreams
-│   ├── block_diagram.png           # Visual export of the IP integrator block design
+│   ├── block_diagram.jpeg           # Visual export of the IP integrator block design
 │   ├── wrapper.v                   # Top-level Verilog HDL wrapper
 │   ├── madh.bit                    # Compiled bitstream file for the FPGA
 │   └── madh.hwh                    # Hardware handoff file (required for PYNQ)
@@ -117,7 +117,7 @@ hw-accelerated-cnn-zynq/
 │
 ├── docs/                           # Project documentation
 │   ├── final_report.pdf            # Full project report
-│   ├── system_architecture.png     # HW/SW partitioning diagram
+│   ├── system_architecture.jpeg     # HW/SW partitioning diagram
 │   └── replication_guide.md        # Step-by-step setup instructions
 │
 ├── output/                         # Project deliverables and demonstrations

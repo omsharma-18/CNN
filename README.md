@@ -20,7 +20,7 @@ This project implements a **hardware-accelerated Convolutional Neural Network (C
 
 | Concern | CPU-Only | FPGA-Accelerated |
 |---|---|---|
-| Inference Latency | High (~300–500 ms on ARM) | Low (target < 50 ms) |
+| Inference Latency | High (~50 ms on ARM) | Low (target < 5 ms) |
 | Parallelism | Sequential, SIMD limited | Massive spatial parallelism |
 | Power Efficiency | Moderate | Optimized inference-only pipeline |
 | Deployability | Flexible | Fixed but ultra-efficient |

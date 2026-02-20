@@ -71,7 +71,8 @@ The design partitions functionality across the Zynq SoC's heterogeneous architec
 
 ### Vivado Block Design
 
-![WhatsApp Image 2026-02-20 at 7 59 43 PM](https://github.com/user-attachments/assets/c806b7fa-7283-418b-b5a7-0f5cc4359f52)
+
+![Block_Diagram](https://github.com/user-attachments/assets/b98425f5-a3ca-41f8-8e3e-319d1dc87dfe)
 
 
 
@@ -120,7 +121,7 @@ hw-accelerated-cnn-zynq/
 │   └── replication_guide.md        # Step-by-step setup instructions
 │
 ├── output/                         # Project deliverables and demonstrations
-│   ├── screenshot.png              # Screenshot of working inference + bounding box
+│   ├── screenshot.jpeg              # Screenshot of working inference + bounding box
 │   ├── resource_utilization.png    # Vivado utilization screenshot
 │   └── video_demo.mp4              # Live demonstration of real-time inference
 │

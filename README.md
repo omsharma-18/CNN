@@ -320,7 +320,7 @@ Vivado v2023.1 — Post-Implementation Report — Device: xc7z020clg400-1 — Da
 
 > ⚠️ **BRAM and DSP are fully saturated** — the design maximally utilizes all available Block RAM and DSP48 slices on the xc7z020. This confirms the CNN is pushing the hardware to its limits. Any further scaling (more filters, deeper network) would require a larger Zynq device.
 
-Screenshot: [`output/resource_utilization.png`](output/resource_utilization.png)
+Screenshot: [`output/resource_utilization.png`](Output/Resource_Utilization_Report.txt)
 
 ---
 

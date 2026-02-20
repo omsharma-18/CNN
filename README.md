@@ -71,7 +71,8 @@ The design partitions functionality across the Zynq SoC's heterogeneous architec
 
 ### Vivado Block Design
 
-![block_diagram](https://github.com/user-attachments/assets/4f7b9ea9-377a-4d95-be17-0ed8024f7d8a)
+![WhatsApp Image 2026-02-20 at 7 59 43 PM](https://github.com/user-attachments/assets/c806b7fa-7283-418b-b5a7-0f5cc4359f52)
+
 
 
 The block design connects the ZYNQ7 Processing System to the `real_detector_0` HLS IP via three AXI SmartConnect blocks — one per HP slave port — enabling concurrent DMA bursts for image, weight, and result buffers from separate DDR regions.
@@ -298,8 +299,8 @@ A core objective of this project is to quantitatively compare the hardware accel
 
 | Metric | CPU-Only (ARM) | FPGA-Accelerated (Zynq PL) | Improvement |
 |---|---|---|---|
-| Latency | ~XXX ms/image | ~XXX ms/image | **> 2× Speedup** |
-| Throughput | ~X FPS | ~X FPS | **> 2× Speedup** |
+| Latency | ~42.8 ms | ~3.38 ms | **> 12× Speedup** |
+| Throughput | ~X FPS | ~295 ms  | **> 2× Speedup** |
 | Estimated Power | ~1.5 W | ~___ W | — |
 
 > Replace placeholder values with actual results after final testing. Benchmark scripts: `software/cpu_inference.ipynb` and `software/fpga_inference.ipynb`.

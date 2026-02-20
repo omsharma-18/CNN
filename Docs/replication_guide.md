@@ -123,7 +123,7 @@ The two files required for PYNQ deployment:
 | `design_1.bit` | `project.runs/impl_1/` |
 | `design_1.hwh` | `project.srcs/sources_1/bd/design_1/hw_handoff/` |
 
-> **Rename both files to the same base name**, e.g., `cnn_accel.bit` and `cnn_accel.hwh`. PYNQ requires matching names to correctly parse the hardware description.
+> **Rename both files to the same base name**, e.g., `madh.bit` and `madh.hwh`. PYNQ requires matching names to correctly parse the hardware description.
 
 ---
 

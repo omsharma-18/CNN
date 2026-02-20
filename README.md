@@ -347,14 +347,17 @@ The demo shows: board booting with overlay loaded → image fed through FPGA pip
 
 ## 👥 Team
 
-| Name | Role |
-|---|---|
-| Madhavan | HLS Design, Vivado Integration, PYNQ Deployment |
-| _(teammate)_ | Model Training, Quantization, Dataset Preparation |
-| _(teammate)_ | CPU Baseline, Benchmarking, Documentation |
+| Name | 
+|---|
+| Madhavan R | 
+| Om Sharma M | 
+| Balaji K |  
 
-**Institution:** _(Your college/university)_  
-**Event:** ARM Embedded AI Hackathon — 2026
+**College Name:** Saveetha Engineering College 
+
+**Event:** BHARAT AI-SoC STUDENT CHALLENGE
+A Project-based Virtual Challenge to Ignite Innovation
+in AI-driven System-on-Chip (SoC) Design
 
 ---
 

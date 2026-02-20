@@ -9,15 +9,8 @@
 4. Set the **Top Function** to your accelerator top (e.g., `cnn_detector`).
 5. Select the target part: `xc7z020clg400-1` (PYNQ-Z2).
 
-### 1.2 C Simulation (Optional Verification)
 
-```
-Solution → Run C Simulation
-```
-
-Verify functional correctness against your golden reference before committing to synthesis.
-
-### 1.3 C Synthesis
+### 1.2 C Synthesis
 
 ```
 Solution → Run C Synthesis
@@ -30,15 +23,9 @@ Inspect the synthesis report for:
 
 > Expected synthesis time: 5–15 minutes depending on directive complexity.
 
-### 1.4 RTL Co-simulation (Optional)
+ 
 
-```
-Solution → Run Cosimulation
-```
-
-Validates the generated RTL against the C testbench. Confirms AXI interface timing.
-
-### 1.5 RTL Implementation
+### 1.3 RTL Implementation
 
 ```
 Solution → Run Implementation
@@ -46,7 +33,7 @@ Solution → Run Implementation
 
 Performs place-and-route on the synthesized RTL to produce accurate post-implementation timing and resource reports.
 
-### 1.6 Export RTL as Vivado IP
+### 1.4 Export RTL as Vivado IP
 
 ```
 Solution → Export RTL
@@ -87,7 +74,7 @@ Instantiate the following IP blocks (refer to `bd/block_diagram.png` for connect
 | IP Block | Configuration |
 |---|---|
 | ZYNQ7 Processing System | Enable HP0 AXI Slave port for DMA |
-| AXI DMA | Scatter-gather disabled; data width = 32-bit |
+| AXI DMA | Scatter-gather disabled; data width = 64-bit |
 | `cnn_accel` (your HLS IP) | Default HLS-generated AXI interfaces |
 | AXI Interconnect | Connect PS ↔ DMA ↔ Accelerator |
 | Processor System Reset | Tie all resets |
@@ -191,19 +178,17 @@ Copy your files into the following layout:
 
 ## Stage 4 — FPGA Inference
 
-Open a Jupyter Notebook session at `http://192.168.2.99` or SSH into the board and run:
+Open a Jupyter Notebook session at `http://192.168.2.99` or SSH into the board and run.
 
 
  
 
 ---
 
-## Stage 5 — CPU Inference (Baseline)
+## Stage 5 — CPU Inference
 
-```bash
-python3 /home/xilinx/pynq/overlays/Madhavan/.py
-```
 
+Open a terminal session (via Jupyter or SSH) and run.
  
 
  

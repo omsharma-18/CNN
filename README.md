@@ -51,24 +51,24 @@ The design partitions functionality across the Zynq SoC's heterogeneous architec
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
 │                        PYNQ-Z2 Zynq-7000 SoC                        │
-│                                                                       │
+│                                                                     │
 │   ┌──────────────────────────┐      ┌───────────────────────────┐   │
-│   │   Processing System (PS)  │      │  Programmable Logic (PL)   │   │
-│   │   ARM Cortex-A9 @ 650MHz  │      │                            │   │
-│   │                           │      │  ┌─────────────────────┐   │   │
-│   │  ① Image Load (OpenCV)    │      │  │   real_detector_0   │   │   │
-│   │  ② Grayscale + Resize     │ AXI4 │  │                     │   │   │
-│   │     (64×64)               │◄────►│  │  Conv1 (1→8)  + ReLU│   │   │
-│   │  ③ Write addr to AXI-Lite │      │  │  MaxPool 2×2        │   │   │
-│   │  ④ Trigger AP_START       │      │  │  Conv2 (8→16) + ReLU│   │   │
-│   │  ⑤ Poll AP_DONE           │      │  │  MaxPool 2×2        │   │   │
-│   │  ⑥ Read result[0..8]      │      │  │  Conv3 (16→32)+ReLU │   │   │
-│   │  ⑦ Draw BBox + Display    │      │  │  MaxPool 2×2        │   │   │
-│   │                           │      │  │  FC (1152→64→2)     │   │   │
-│   └──────────────────────────┘      │  │  ArgMax + BBox       │   │   │
-│                                      │  └─────────────────────┘   │   │
-│                 DDR3 SDRAM           │                            │   │
-│         (shared PS-PL memory)        │   AXI SmartConnect ×3     │   │
+│   │   Processing System (PS) │      │  Programmable Logic (PL)  │   │
+│   │   ARM Cortex-A9 @ 650MHz │      │                           │   │
+│   │                          │      │  ┌─────────────────────┐  │   │
+│   │  ① Image Load (OpenCV)   │      │  │   real_detector_0   │  │   │
+│   │  ② Grayscale + Resize    │ AXI4 │  │                     │  │   │
+│   │     (64×64)              │◄────►│  │  Conv1 (1→8)  + ReLU│  │   │
+│   │  ③ Write addr to AXI-Lite│      │  │  MaxPool 2×2        │  │   │
+│   │  ④ Trigger AP_START      │      │  │  Conv2 (8→16) + ReLU│  │   │
+│   │  ⑤ Poll AP_DONE          │      │  │  MaxPool 2×2        │  │   │
+│   │  ⑥ Read result[0..8]     │      │  │  Conv3 (16→32)+ReLU │  │   │
+│   │  ⑦ Draw BBox + Display   │      │  │  MaxPool 2×2        │  │   │
+│   │                          │      │  │  FC (1152→64→2)     │  │   │
+│   └──────────────────────────┘      │  │  ArgMax + BBox      │  │   │
+│                                     │  └─────────────────────┘  │   │
+│                 DDR3 SDRAM          │                           │   │
+│         (shared PS-PL memory)       │   AXI SmartConnect ×3     │   │
 └─────────────────────────────────────────────────────────────────────┘
 ```
 

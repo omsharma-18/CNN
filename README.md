@@ -128,10 +128,7 @@ hw-accelerated-cnn-zynq/
 │
 ├── software/                       # Embedded software and Jupyter notebooks
 │   ├── fpga_inference.ipynb        # Hardware-accelerated execution using the bitstream
-│   ├── cpu_inference.ipynb         # Baseline software-only CNN execution on ARM
-│   └── utils/
-│       ├── preprocess.py           # Resize, grayscale helpers
-│       └── visualize.py            # BBox drawing, metrics overlay
+│   └── cpu_inference.ipynb         # Baseline software-only CNN execution on ARM
 │
 ├── docs/                           # Project documentation
 │   ├── final_report.pdf            # Full project report

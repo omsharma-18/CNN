@@ -78,24 +78,7 @@ The block design connects the ZYNQ7 Processing System to the `real_detector_0` H
 
 ### Data Flow
 
-```
-[DDR: image_buf]  ──AXI burst──►  [BRAM: img_buf 64×64]
-                                          │
-                                    Conv1 + Pool1
-                                    [BRAM: pool1 31×31×8]
-                                          │
-[DDR: conv*_w/b]  ──AXI burst──►   Conv2 + Pool2
-                                    [BRAM: pool2 14×14×16]
-                                          │
-                                    Conv3 + Pool3
-                                    [BRAM: pool3 6×6×32]
-                                          │
-                                   FC: 1152 → 64 → 2
-                                          │
-                                   ArgMax + BBox
-                                          │
-                                    ◄──AXI write──  [DDR: result[9]]
-```
+![dataflow](https://github.com/user-attachments/assets/cce09a51-ea53-4d9e-82ec-e42c38ecb0fb)
 
 ---
 

@@ -121,7 +121,6 @@ hw-accelerated-cnn-zynq/
 │
 ├── output/                         # Project deliverables and demonstrations
 │   ├── screenshot.png              # Screenshot of working inference + bounding box
-│   ├── performance_comparison.png  # Latency/FPS bar chart
 │   ├── resource_utilization.png    # Vivado utilization screenshot
 │   └── video_demo.mp4              # Live demonstration of real-time inference
 │
@@ -366,9 +365,6 @@ in AI-driven System-on-Chip (SoC) Design
 - [PYNQ Documentation](https://pynq.readthedocs.io)
 - [Vitis HLS User Guide UG1399](https://docs.xilinx.com/r/en-US/ug1399-vitis-hls)
 - [PYNQ-Z2 Reference Manual](https://www.tulembedded.com/FPGA/ProductsPYNQ-Z2.html)
-- Kaggle Dogs vs. Cats Dataset
-- Krizhevsky et al., "ImageNet Classification with Deep CNNs" (AlexNet)
-
 ---
 
 <div align="center">
